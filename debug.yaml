@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  gather_facts: yes
+  become: false
+  tasks:
+  - name: Distribution
+    debug: msg="{{ ansible_distribution }}"
+  - name: Distribution version
+    debug: msg="{{ ansible_distribution_version}}"
+  - name: Distribution major version
+    debug: msg="{{ ansible_distribution_major_version }}"
+  - name: OS family
+    debug: msg="{{ ansible_os_family }}"
+  - name: Erlang
+    debug: msg="deb http://packages.erlang-solutions.com/ubuntu {{ ansible_distribution_release|lower }} contrib"
+  - name: RabbitMQ
+    debug: msg="deb https://dl.bintray.com/rabbitmq/debian {{ ansible_distribution_release|lower }} main"

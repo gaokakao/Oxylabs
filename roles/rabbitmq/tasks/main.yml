@@ -1,0 +1,21 @@
+---
+
+- name: Install Prerequisites
+  apt:
+    name: ["curl", "gnupg", "apt-transport-https"]
+    state: latest
+
+#- name: Add RabbitMQ repository Key
+#  apt_key:
+#    url: "https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA"
+#    state: present
+
+
+- name: Install RabbitMQ Server
+  apt:
+    name: ["rabbitmq-server"]
+    state: latest
+
+- name: Enable Web Admin Plugin
+  shell:
+    cmd: rabbitmq-plugins enable rabbitmq_management
